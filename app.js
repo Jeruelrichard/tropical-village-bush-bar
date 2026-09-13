@@ -13,14 +13,6 @@ document.querySelectorAll('[data-directions]').forEach((link) => { link.href = r
 document.querySelectorAll('[data-whatsapp]').forEach((link) => { link.href = `https://wa.me/${digits}?text=${encodeURIComponent(opening)}`; link.target = '_blank'; link.rel = 'noopener noreferrer'; });
 document.querySelector('[data-cards]').innerHTML = restaurant.cards.map((card, index) => `<article class="card" data-number="0${index + 1}"><i class="fa-solid ${card[0]}"></i><div><h3>${card[1]}</h3><p>${card[2]}</p></div></article>`).join('');
 
-const gallery = document.querySelector('[data-gallery]');
-const gallerySection = document.querySelector('[data-gallery-section]');
-const galleryFiles = (document.body.dataset.gallery || '').split('|').filter(Boolean);
-if (gallery && gallerySection && galleryFiles.length) {
-  gallery.innerHTML = galleryFiles.map((file, index) => `<figure class="photo-card"><img src="assets/images/${file}" alt="${restaurant.short} from its Google Maps profile, photo ${index + 1}" loading="lazy"></figure>`).join('');
-  gallerySection.hidden = false;
-}
-
 const toggle = document.querySelector('[data-toggle]');
 const nav = document.querySelector('[data-nav]');
 const closeNav = () => { document.body.classList.remove('nav-open'); toggle.setAttribute('aria-expanded', 'false'); toggle.innerHTML = '<span class="sr-only">Open navigation</span><i class="fa-solid fa-bars"></i>'; };
